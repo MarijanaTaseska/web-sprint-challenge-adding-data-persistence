@@ -5,6 +5,10 @@ const Projects = require('./model')
 router.get('/', (req, res, next)=>{
     Projects.getAll()
     .then( projects => {
+        projects = projects.map(project => ({
+            ...project,
+            project_completed: Boolean(project.project_completed),
+          }))
         res.status(200).json(projects)
     })
     .catch(next)

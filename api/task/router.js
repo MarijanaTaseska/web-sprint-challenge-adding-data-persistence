@@ -5,6 +5,10 @@ const Tasks = require('./model')
 router.get('/', (req, res, next)=>{
     Tasks.getAll()
     .then( tasks => {
+        tasks = tasks.map(task => ({
+            ...task,
+            task_completed: Boolean(task.task_completed)
+        }))
         res.status(200).json(tasks)
     })
     .catch(next)
