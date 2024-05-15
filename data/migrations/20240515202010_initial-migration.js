@@ -31,7 +31,6 @@ exports.up = async function (knex) {
         })
         .createTable('project_resources', tbl => {
             tbl.increments('project_resource_id')
-            
             tbl.integer('project_id')
             .unsigned()
             .notNullable()
@@ -39,7 +38,6 @@ exports.up = async function (knex) {
             .inTable('projects')
             .onDelete('RESTRICT')
             .onUpdate('RESTRICT')
-
             tbl.integer('resource_id')
             .unsigned()
             .notNullable()
@@ -59,4 +57,5 @@ exports.down = async function (knex) {
         .dropTableIfExists('tasks')
         .dropTableIfExists('resources')
         .dropTableIfExists('projects')
+        .dropTableIfExists('project_resources')
 };
