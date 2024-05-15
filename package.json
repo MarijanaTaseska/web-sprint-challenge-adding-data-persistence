@@ -8,7 +8,8 @@
     "server": "nodemon index.js",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
-    "reset": "nom run rollback && nom run migrate && npm run seed",
+    "reset": "npm run rollback && npm run migrate && npm run seed",
+    "cleanup":"knex seed:run --specific=01-cleanup.js",
     "seed": "knex seed:run"
   },
   "repository": {
