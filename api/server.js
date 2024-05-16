@@ -12,7 +12,7 @@ server.use('/api/projects', projectsRouter)
 server.use('/api/tasks', tasksRouter)
 
 server.use('*', (req, res) => {
-    res.json({message:"server is up"})
+    res.json({ message: "server is up" })
 })
 
 module.exports = server
