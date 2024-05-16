@@ -14,6 +14,16 @@ router.get('/', (req, res, next)=>{
     .catch(next)
 })
 
+router.post('/', (req, res, next) =>{
+    const project = req.body
+    Projects.add(project)
+    .then(project => {
+        project.project_completed = Boolean(project.project_completed)
+        res.status(201).json(project)
+    }).catch(next)
+})
+
+
 router.use((err, req, res, next) => { //eslint-disable-line
     res.status(500).json({
         customMessage:"Something went wrong inside the projects router ",
